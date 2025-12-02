@@ -1,0 +1,136 @@
+---
+import { Home, TrendingUp, FileText, Key, Scale, HeadphonesIcon } from 'lucide-react';
+
+const services = [
+  {
+    title: 'Compra y Venta',
+    description: 'Asesoramiento integral en la compra o venta de tu propiedad. Te acompañamos en cada paso del proceso, desde la valuación hasta la escritura.',
+    features: [
+      'Valuación profesional',
+      'Marketing de la propiedad',
+      'Negociación y cierre',
+      'Asesoramiento legal'
+    ]
+  },
+  {
+    title: 'Administración de Alquileres',
+    description: 'Gestionamos tu propiedad en alquiler de forma integral, ocupándonos de todo para que vos no tengas que preocuparte.',
+    features: [
+      'Búsqueda de inquilinos',
+      'Cobro de alquileres',
+      'Mantenimiento',
+      'Gestión de reclamos'
+    ]
+  },
+  {
+    title: 'Tasaciones',
+    description: 'Tasaciones profesionales realizadas por expertos matriculados, con informes detallados para cualquier finalidad.',
+    features: [
+      'Tasaciones comerciales',
+      'Tasaciones judiciales',
+      'Tasaciones para seguros',
+      'Informes técnicos'
+    ]
+  },
+  {
+    title: 'Inversiones',
+    description: 'Asesoramiento especializado para inversores que buscan rentabilidad en el mercado inmobiliario.',
+    features: [
+      'Análisis de mercado',
+      'Proyección de rentabilidad',
+      'Búsqueda de oportunidades',
+      'Gestión de cartera'
+    ]
+  },
+  {
+    title: 'Asesoramiento Legal',
+    description: 'Contamos con un equipo de abogados especializados en derecho inmobiliario para garantizar operaciones seguras.',
+    features: [
+      'Estudio de títulos',
+      'Revisión de contratos',
+      'Tramitación de escrituras',
+      'Asesoramiento fiscal'
+    ]
+  },
+  {
+    title: 'Atención Personalizada',
+    description: 'Un agente dedicado te acompañará durante todo el proceso, disponible para resolver tus dudas en cualquier momento.',
+    features: [
+      'Atención 24/7',
+      'Visitas programadas',
+      'Seguimiento constante',
+      'Post-venta'
+    ]
+  }
+];
+
+const icons = [Home, Key, Scale, TrendingUp, FileText, HeadphonesIcon];
+---
+
+<div class="py-20 bg-gray-50">
+  <div class="container mx-auto px-4 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-blue-900 mb-4">Nuestros Servicios</h2>
+      <p class="text-gray-600 max-w-3xl mx-auto">
+        Ofrecemos una amplia gama de servicios inmobiliarios diseñados para satisfacer 
+        todas tus necesidades, ya seas propietario, inversor o estés buscando tu próximo hogar.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {services.map((service, index) => {
+        const Icon = icons[index];
+        return (
+          <div class="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-300 group">
+            <div class="w-14 h-14 bg-gradient-to-br from-blue-900 to-blue-700 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <Icon className="w-7 h-7 text-amber-400" />
+            </div>
+
+            <h3 class="text-blue-900 mb-3 group-hover:text-amber-600 transition-colors">
+              {service.title}
+            </h3>
+            
+            <p class="text-gray-600 mb-6">
+              {service.description}
+            </p>
+
+            <ul class="space-y-2">
+              {service.features.map((feature) => (
+                <li class="flex items-center gap-2 text-sm text-gray-600">
+                  <div class="w-1.5 h-1.5 bg-amber-400 rounded-full"></div>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- CTA Section -->
+    <div class="mt-16 bg-gradient-to-br from-blue-900 to-blue-700 rounded-2xl p-12 text-center">
+      <h3 class="text-white mb-4">¿Necesitás asesoramiento personalizado?</h3>
+      <p class="text-gray-200 mb-8 max-w-2xl mx-auto">
+        Nuestro equipo de expertos está listo para ayudarte. Contactanos hoy mismo y 
+        descubrí cómo podemos ayudarte a alcanzar tus objetivos inmobiliarios.
+      </p>
+      <button
+        data-scroll-to="contacto"
+        class="scroll-to-contact px-8 py-4 bg-amber-400 text-blue-900 rounded-lg hover:bg-amber-300 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105"
+      >
+        Contactar ahora
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelector('.scroll-to-contact')?.addEventListener('click', () => {
+    const element = document.getElementById('contacto');
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
+    }
+  });
+</script>

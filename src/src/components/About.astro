@@ -1,0 +1,109 @@
+---
+import { Award, Users, Heart, TrendingUp } from 'lucide-react';
+
+const values = [
+  {
+    title: 'Compromiso',
+    description: 'Nos comprometemos con cada cliente para encontrar su propiedad ideal'
+  },
+  {
+    title: 'Profesionalismo',
+    description: 'Equipo altamente capacitado y con amplia experiencia en el mercado'
+  },
+  {
+    title: 'Atención personalizada',
+    description: 'Cada cliente es único y merece un servicio a medida de sus necesidades'
+  },
+  {
+    title: 'Transparencia',
+    description: 'Operaciones claras y honestas, sin sorpresas ni costos ocultos'
+  }
+];
+
+const team = [
+  { name: 'María González', role: 'Directora General' },
+  { name: 'Carlos Rodríguez', role: 'Tasaciones y Valuaciones' },
+  { name: 'Ana Martínez', role: 'Administración de Alquileres' }
+];
+---
+
+<div class="py-20 bg-white">
+  <div class="container mx-auto px-4 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-blue-900 mb-4">Nosotros</h2>
+      <p class="text-gray-600 max-w-3xl mx-auto">
+        Con más de 20 años de trayectoria en el mercado inmobiliario argentino, nos hemos 
+        consolidado como una de las inmobiliarias más confiables y profesionales de la región.
+      </p>
+    </div>
+
+    <!-- Historia y Misión -->
+    <div class="grid md:grid-cols-2 gap-12 mb-20">
+      <div>
+        <h3 class="text-blue-900 mb-4">Nuestra Historia</h3>
+        <p class="text-gray-600 mb-4">
+          Fundada en 2003, nuestra inmobiliaria nació con el objetivo de brindar un servicio 
+          personalizado y profesional en el sector inmobiliario. Lo que comenzó como una 
+          pequeña oficina familiar, hoy es una empresa consolidada que ha ayudado a más de 
+          1,200 familias a encontrar su hogar ideal.
+        </p>
+        <p class="text-gray-600">
+          Nuestro crecimiento se basa en la confianza que nuestros clientes depositan en 
+          nosotros, y en el compromiso constante de superar sus expectativas en cada operación.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-blue-900 mb-4">Nuestra Misión</h3>
+        <p class="text-gray-600 mb-4">
+          Facilitar el camino hacia el hogar soñado de cada cliente, ofreciendo asesoramiento 
+          experto, transparencia en cada operación y un servicio que va más allá de lo esperado.
+        </p>
+        <p class="text-gray-600">
+          Buscamos ser el puente entre las personas y sus proyectos de vida, ya sea la compra 
+          de su primera vivienda, una inversión estratégica o el alquiler perfecto para cada 
+          etapa de la vida.
+        </p>
+      </div>
+    </div>
+
+    <!-- Valores -->
+    <div class="mb-20">
+      <h3 class="text-blue-900 text-center mb-12">Nuestros Valores</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {values.map((value, index) => (
+          <div class="text-center">
+            <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-900 to-blue-700 rounded-xl flex items-center justify-center">
+              {index === 0 && <Heart className="w-8 h-8 text-amber-400" />}
+              {index === 1 && <Award className="w-8 h-8 text-amber-400" />}
+              {index === 2 && <Users className="w-8 h-8 text-amber-400" />}
+              {index === 3 && <TrendingUp className="w-8 h-8 text-amber-400" />}
+            </div>
+            <h4 class="text-blue-900 mb-2">{value.title}</h4>
+            <p class="text-gray-600 text-sm">{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Equipo -->
+    <div>
+      <h3 class="text-blue-900 text-center mb-12">Nuestro Equipo</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {team.map((member) => (
+          <div class="text-center group">
+            <div class="relative w-48 h-48 mx-auto mb-4 rounded-full overflow-hidden">
+              <img
+                src="https://images.unsplash.com/flagged/photo-1558954157-aa76c0d246c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsJTIwZXN0YXRlJTIwcHJvZmVzc2lvbmFsJTIwdGVhbXxlbnwxfHx8fDE3NjMwNDcxMDN8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                alt={member.name}
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+              />
+            </div>
+            <h4 class="text-blue-900 mb-1">{member.name}</h4>
+            <p class="text-gray-600 text-sm">{member.role}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>

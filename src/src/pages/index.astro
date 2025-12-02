@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Hero from '../components/Hero.astro';
+import PropertySearch from '../components/PropertySearch';
+import Properties from '../components/Properties';
+import About from '../components/About.astro';
+import Services from '../components/Services.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+---
+
+<Layout title="Inmobiliaria - Tu hogar ideal">
+  <Header client:load />
+  
+  <main>
+    <section id="inicio">
+      <Hero />
+      <PropertySearch client:load />
+    </section>
+    
+    <section id="propiedades">
+      <Properties client:visible />
+    </section>
+    
+    <section id="nosotros">
+      <About />
+    </section>
+    
+    <section id="servicios">
+      <Services />
+    </section>
+    
+    <section id="contacto">
+      <Contact />
+    </section>
+  </main>
+  
+  <Footer />
+  <WhatsAppButton />
+</Layout>
