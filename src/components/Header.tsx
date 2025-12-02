@@ -29,15 +29,30 @@ export function Header({ activeSection, setActiveSection }: HeaderProps) {
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
-    setIsMobileMenuOpen(false);
+    // Close mobile menu if open
+    if (isMobileMenuOpen) {
+      setIsMobileMenuOpen(false);
+      // Small delay to allow the menu to close before scrolling
+      setTimeout(() => {
+        scrollToElement(sectionId);
+      }, 100);
+    } else {
+      scrollToElement(sectionId);
+    }
+  };
+
+  const scrollToElement = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const offset = 80;
+      const offset = 80; // Height of the header
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-      window.scrollTo({
-        top: elementPosition - offset,
-        behavior: 'smooth'
+      // Using scrollIntoView for better mobile support
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
       });
+      // Manually adjust the scroll position to account for the fixed header
+      window.scrollBy(0, -offset);
     }
   };
 
