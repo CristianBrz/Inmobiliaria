@@ -43,16 +43,27 @@ export function Header({ activeSection, setActiveSection }: HeaderProps) {
 
   const scrollToElement = (sectionId: string) => {
     const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 80; // Height of the header
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-      // Using scrollIntoView for better mobile support
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+    if (!element) return;
+
+    const headerOffset = 80; // Height of the header
+    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - headerOffset;
+
+    // For mobile devices, use a more reliable scroll method
+    if ('scrollBehavior' in document.documentElement.style) {
+      // Modern browsers with smooth scroll support
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
       });
-      // Manually adjust the scroll position to account for the fixed header
-      window.scrollBy(0, -offset);
+    } else {
+      // Fallback for older browsers
+      window.scrollTo(0, offsetPosition);
+    }
+
+    // Close the mobile menu if it's open
+    if (isMobileMenuOpen) {
+      setIsMobileMenuOpen(false);
     }
   };
 
